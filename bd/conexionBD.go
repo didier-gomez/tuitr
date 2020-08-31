@@ -8,7 +8,7 @@ import (
   "go.mongodb.org/mongo-driver/mongo/options"
 )
 // TODO change db pwd
-var pwd := "pwd"
+var pwd = "pwd"
 var clientOptions = options.Client().ApplyURI("mongodb+srv://dgmz:"+ pwd +"@cluster0.yucbq.mongodb.net/tuitr?retryWrites=true&w=majority")
 
 var MongoCN = ConectarBD();
