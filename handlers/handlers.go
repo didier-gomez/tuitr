@@ -23,6 +23,7 @@ func Handlers() {
 	/* tuit endpoints */
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.CreateTuit))).Methods("POST")
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.GetTuits))).Methods("GET")
+	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.DeleteTuit))).Methods("DELETE")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
