@@ -19,6 +19,15 @@ func Handlers() {
 	/* user endpoints */
 	router.HandleFunc("/profile",	middlew.CheckDB(middlew.JwtAuth(routers.FindProfile))).Methods("GET")
 	router.HandleFunc("/profile",	middlew.CheckDB(middlew.JwtAuth(routers.UpdateProfile))).Methods("PUT")
+	
+	router.HandleFunc("/profile/avatar",	middlew.CheckDB(middlew.JwtAuth(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/profile/avatar",	middlew.CheckDB(routers.FindAvatar)).Methods("GET")
+	router.HandleFunc("/profile/banner",	middlew.CheckDB(middlew.JwtAuth(routers.UploadBanner))).Methods("POST")
+	router.HandleFunc("/profile/banner",	middlew.CheckDB(routers.FindBanner)).Methods("GET")
+
+	/* relations*/
+	router.HandleFunc("/relation",	middlew.CheckDB(middlew.JwtAuth(routers.CreateRelation))).Methods("POST")
+	router.HandleFunc("/relation",	middlew.CheckDB(middlew.JwtAuth(routers.DeleteRelation))).Methods("DELETE")
 
 	/* tuit endpoints */
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.CreateTuit))).Methods("POST")

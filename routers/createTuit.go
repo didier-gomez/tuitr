@@ -26,4 +26,5 @@ func CreateTuit(w http.ResponseWriter, r * http.Request) {
 		http.Error(w, "Insert tuit failed ", 400)
 		return
 	}
+	w.WriteHeader(http.StatusCreated)
 }
