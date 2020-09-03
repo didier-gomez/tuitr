@@ -1,7 +1,6 @@
 package routers
 
 import (
-	"fmt"
 	"net/http"
 	"encoding/json"
 	"github.com/didier-gomez/tuitr/bd"
@@ -14,8 +13,6 @@ func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "invalid data "+err.Error(), http.StatusBadRequest)
 		return
 	}
-	fmt.Println(t)
-	fmt.Println(UserID)
 	var status bool
 	status, err = bd.UpdateRegister(t, UserID)
 

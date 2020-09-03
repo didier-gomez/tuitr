@@ -3,7 +3,6 @@ package routers
 import (
 	"errors"
 	"strings"
-	"fmt"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/didier-gomez/tuitr/bd"
 	"github.com/didier-gomez/tuitr/models"
