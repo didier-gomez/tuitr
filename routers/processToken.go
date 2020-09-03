@@ -3,6 +3,7 @@ package routers
 import (
 	"errors"
 	"strings"
+	"fmt"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/didier-gomez/tuitr/bd"
 	"github.com/didier-gomez/tuitr/models"
@@ -23,10 +24,10 @@ func ProcessToken(token string) (*models.Claim, bool, string, error) {
 	})
 	// token succesfull
 	if err == nil {
-		_, found, _ := bd.CheckUserExists(claims.Email)
+		usr, found, _ := bd.CheckUserExists(claims.Email)
 		if found == true {
 			Email = claims.Email
-			UserID = claims.ID.Hex()
+			UserID = usr.ID.Hex()
 		}
 		return claims, found, UserID, nil
 	}

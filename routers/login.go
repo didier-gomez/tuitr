@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r * http.Request) {
 		return
 	}
 	result := models.ResponseLogin {
-		Token: jwtKey,
+		Token: "Bearer"+jwtKey,
 	}
 	w.Header().Set("Content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
