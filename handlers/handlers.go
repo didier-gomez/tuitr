@@ -28,6 +28,7 @@ func Handlers() {
 	/* relations*/
 	router.HandleFunc("/relation",	middlew.CheckDB(middlew.JwtAuth(routers.CreateRelation))).Methods("POST")
 	router.HandleFunc("/relation",	middlew.CheckDB(middlew.JwtAuth(routers.DeleteRelation))).Methods("DELETE")
+	router.HandleFunc("/relation/check",	middlew.CheckDB(middlew.JwtAuth(routers.CheckRelation))).Methods("GET")
 
 	/* tuit endpoints */
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.CreateTuit))).Methods("POST")
