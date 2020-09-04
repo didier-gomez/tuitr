@@ -19,7 +19,7 @@ func CheckRelation(t models.Relation) (bool, error) {
 	var result models.Relation
 	err := col.FindOne(ctx, whereData).Decode(&result)
 	if err != nil {
-		log.Fatal("db error " +err.Error())
+		log.Print("db error " +err.Error())
 		return false, err
 	}
 	return true,nil

@@ -19,6 +19,7 @@ func Handlers() {
 	/* user endpoints */
 	router.HandleFunc("/profile",	middlew.CheckDB(middlew.JwtAuth(routers.FindProfile))).Methods("GET")
 	router.HandleFunc("/profile",	middlew.CheckDB(middlew.JwtAuth(routers.UpdateProfile))).Methods("PUT")
+	router.HandleFunc("/profiles",	middlew.CheckDB(middlew.JwtAuth(routers.FindAllProfiles))).Methods("GET")
 	
 	router.HandleFunc("/profile/avatar",	middlew.CheckDB(middlew.JwtAuth(routers.UploadAvatar))).Methods("POST")
 	router.HandleFunc("/profile/avatar",	middlew.CheckDB(routers.FindAvatar)).Methods("GET")
@@ -34,6 +35,7 @@ func Handlers() {
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.CreateTuit))).Methods("POST")
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.GetTuits))).Methods("GET")
 	router.HandleFunc("/tuit",	middlew.CheckDB(middlew.JwtAuth(routers.DeleteTuit))).Methods("DELETE")
+	router.HandleFunc("/tuits",	middlew.CheckDB(middlew.JwtAuth(routers.FindFollowedTuits))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {

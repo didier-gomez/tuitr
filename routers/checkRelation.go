@@ -13,7 +13,9 @@ func CheckRelation(w http.ResponseWriter, r * http.Request) {
 	var t models.Relation
 	t.UserID = UserID
 	t.RelatedUserID = ID
+
 	status, err := bd.CheckRelation(t)
+
 	fmt.Println("status ", status, "err ", err)
 	var res models.CheckRelationResponse
 	if err != nil || status == false {

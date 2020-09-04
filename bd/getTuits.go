@@ -21,7 +21,7 @@ func GetTuits(ID string, page int64) ([]*models.Tuits, bool) {
 	opts.SetLimit(PageSize)
 	opts.SetSort(bson.D{{Key: "date", Value: -1}}) // order by date desc
 	opts.SetSkip((page-1) * PageSize)
-	cursor, err := col.Find(ctx, whereData)
+	cursor, err := col.Find(ctx, whereData, opts)
 	if err != nil {
 		log.Fatal(err.Error())
 		return result, false
@@ -34,5 +34,6 @@ func GetTuits(ID string, page int64) ([]*models.Tuits, bool) {
 		}
 		result = append(result, &register)
 	}
+	cursor.Close(ctx)
 	return result, true
 }
